@@ -260,6 +260,29 @@
       font-size: 1.02rem;
     }
 
+    .committee-block + .committee-block {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .committee-block h3 {
+      margin: 0 0 1rem;
+      color: var(--navy-900);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    .committee-members {
+      margin-bottom: 0;
+    }
+
+    .committee-members.single-member {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 24rem;
+    }
+
     .organizers {
       display: grid;
       gap: 1rem;
@@ -465,26 +488,31 @@
       </ul>
     </section>
 
-    <section class="panel prose" id="participants">
-      <h2 class="section-heading">Expected Number of Participants</h2>
+    <section class="panel" id="committees">
+      <h2 class="section-heading">Committees</h2>
 
-      <p>We expect approximately 40–60 participants, with a mix of systems researchers, ML systems researchers, recommendation researchers, graduate students, and industrial engineers.</p>
+      <div class="committee-block">
+        <h3>General &amp; Steering Committee Co-Chairs</h3>
+        <ul class="people-list committee-members">
+          <li><strong>Yiming Qiu</strong>, The University of Hong Kong</li>
+          <li><strong>Renyu Yang</strong>, Beihang University</li>
+          <li><strong>Chen Yang</strong>, Kuaishou Technology</li>
+          <li><strong>Yuan Xie</strong>, Hong Kong University of Science and Technology</li>
+          <li><strong>Ceyu Xu</strong>, Hong Kong University of Science and Technology</li>
+        </ul>
+      </div>
 
-      <p>To attract a diverse audience, we will invite TPC members from both systems and recommendation communities. Specifically, we are getting in touch with following professors and researchers to serve as TPC members:</p>
+      <div class="committee-block">
+        <h3>Program Committee</h3>
+        <!-- Program Committee members will be added later. -->
+      </div>
 
-      <ul class="people-list">
-        <li><strong>Ang Chen</strong>, University of Michigan</li>
-        <li><strong>Ceyu Xu</strong>, Hong Kong University of Science and Technology</li>
-        <li><strong>Minghui Xie</strong>, Renmin University of China</li>
-        <li><strong>Xiang Chen</strong>, Peking University</li>
-        <li><strong>Xiaofei Liao</strong>, Huazhong University of Science and Technology</li>
-        <li><strong>Yibo Huang</strong>, Oracle</li>
-        <li><strong>Youyou Lu</strong>, Tsinghua University</li>
-        <li><strong>Yuan Xie</strong>, Hong Kong University of Science and Technology</li>
-        <li><strong>Zhiguang Chen</strong>, Sun Yat-sen University</li>
-      </ul>
-
-      <p>For accepted papers, we will select a Best Paper award with a cash bonus and a certificate. We also plan to contribute to the community by inviting industrial keynotes to elaborate current practices on serving large-scale recommender systems.</p>
+      <div class="committee-block">
+        <h3>Web Chair</h3>
+        <ul class="people-list committee-members single-member">
+          <li><strong>Xiangrui Yang</strong></li>
+        </ul>
+      </div>
     </section>
 
     <section class="panel" id="organizers">
