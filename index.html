@@ -308,16 +308,6 @@
       border-radius: 999px;
       background: var(--red-600);
     }
-    .section-kicker {
-      display: block;
-      margin-bottom: 0.35rem;
-      color: var(--red-600);
-      font-family: Inter, sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
 
     .prose p { margin: 0 0 1.1rem; color: var(--ink-700); font-size: 1.02rem; }
     .prose p:last-child { margin-bottom: 0; }
@@ -369,7 +359,6 @@
       border-radius: 999px;
       background: var(--blue-600);
     }
-    .subhead .section-kicker { margin-bottom: 0; }
 
     /* Topics — plain bullet list */
     .topics {
@@ -457,6 +446,12 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       background: #fbfcfd;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .people-list li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(13, 32, 51, 0.08);
+      border-color: var(--line-strong);
     }
     .people-list strong { display: block; color: var(--navy-900); font-size: 1rem; margin-bottom: 0.15rem; }
 
@@ -483,37 +478,42 @@
       background: #fbfcfd;
     }
 
-    /* Organizers — header card + bio, separated by dividers */
-    .organizers { display: grid; gap: 0; }
-    .organizer {
+    /* Organizers — compact contact cards */
+    .organizers {
       display: grid;
-      grid-template-columns: minmax(13rem, 0.34fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      padding: 2rem 0;
-      border-top: 1px solid var(--line);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 0;
     }
-    .organizer:first-child { border-top: none; padding-top: 0; }
-    .organizer-meta {
-      align-self: start;
-      padding: 1.15rem 1.2rem;
+    .organizer {
+      padding: 1.1rem 1.25rem;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: var(--blue-100);
+      background: #fbfcfd;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .organizer:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(13, 32, 51, 0.08);
+      border-color: var(--line-strong);
     }
     .organizer-meta strong {
       display: block;
-      margin-bottom: 0.3rem;
       color: var(--navy-900);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.25;
     }
-    .organizer-meta p {
-      margin: 0;
+    .organizer-affil {
+      margin: 0.3rem 0 0.4rem;
       color: var(--ink-700);
       font-size: 0.9rem;
     }
-    .organizer-meta a { color: var(--blue-600); overflow-wrap: anywhere; }
-    .organizer-bio { margin: 0; align-self: center; color: var(--ink-700); font-size: 0.98rem; }
+    .organizer-email {
+      display: inline-block;
+      color: var(--blue-600);
+      font-size: 0.86rem;
+      overflow-wrap: anywhere;
+    }
 
     /* Footer */
     .footer {
@@ -557,12 +557,13 @@
     }
     @media (max-width: 900px) {
       .people-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .organizer { grid-template-columns: 1fr; gap: 0.75rem; }
+      .organizers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 640px) {
       .hero { min-height: 28rem; padding-top: 4rem; }
       .topics { grid-template-columns: 1fr; }
       .people-list { grid-template-columns: 1fr; }
+      .organizers { grid-template-columns: 1fr; }
       .dates-row { grid-template-columns: 1fr; }
       .dates-row .when { white-space: normal; }
     }
@@ -635,7 +636,7 @@
   <main>
     <!-- Overview -->
     <section class="prose" id="overview">
-      <h2 class="section-heading"><span class="section-kicker">Overview</span>About the Workshop</h2>
+      <h2 class="section-heading">About the Workshop</h2>
 
       <div class="prose-cols">
         <p>The 1st Frontier Recommender Systems (<strong>FRecSys</strong>) workshop, co-located with <a href="https://sigops.org/s/conferences/atc/2026/index.html" target="_blank" rel="noopener">ACM SIGOPS ATC 2026</a>, provides a forum for the systems and recommendation communities to rethink the infrastructure foundations of modern recommender systems. Recommender systems are now core production infrastructure for online services&mdash;shaping user experience, content distribution, advertising, and e-commerce at global scale&mdash;operating under strict latency, cost, reliability, and freshness constraints while continuously adapting to changing users, content, models, and business requirements.</p>
@@ -648,7 +649,7 @@
 
     <!-- People -->
     <section id="people">
-      <h2 class="section-heading"><span class="section-kicker">People</span>Committees &amp; Organizers</h2>
+      <h2 class="section-heading">Committees &amp; Organizers</h2>
 
       <div class="committee-block">
         <h3>General &amp; Steering Committee Co-Chairs</h3>
@@ -679,25 +680,25 @@
           <article class="organizer">
             <div class="organizer-meta">
               <strong>Yiming Qiu</strong>
-              <p>The University of Hong Kong<br><a href="mailto:yimingq@hku.hk">yimingq@hku.hk</a></p>
+              <p class="organizer-affil">The University of Hong Kong</p>
+              <a class="organizer-email" href="mailto:yimingq@hku.hk">yimingq@hku.hk</a>
             </div>
-            <p class="organizer-bio">Yiming Qiu is an Assistant Professor at the Department of Computer Science, the University of Hong Kong. He has served as a TPC member and reviewer for conferences and journals such as SIGCOMM, ASPLOS, and ToN, among others, and he is the Web Chair for ATC 2026. His research spans systems and networking, with a focus on using performance analysis, low-level optimizations, automated reasoning, and machine learning techniques to improve cloud automation, infrastructure reliability, and system performance. His research interest focuses on the deployment of frontier recommendation systems, where large-scale retrieval, ranking, embedding, and serving pipelines depend on reliable cloud infrastructure, efficient datacenter communication, and secure operations.</p>
           </article>
 
           <article class="organizer">
             <div class="organizer-meta">
               <strong>Renyu Yang</strong>
-              <p>Beihang University<br><a href="mailto:renyuyang@buaa.edu.cn">renyuyang@buaa.edu.cn</a></p>
+              <p class="organizer-affil">Beihang University</p>
+              <a class="organizer-email" href="mailto:renyuyang@buaa.edu.cn">renyuyang@buaa.edu.cn</a>
             </div>
-            <p class="organizer-bio">Renyu Yang is an Associate Professor with the School of Software at Beihang University. He has served as TPC members/chairs across ICDCS, WWW, KDD, AAAI, etc. His research focuses on large-scale dependable distributed systems, AI infrastructure, AIOps, particularly for recommendation and AI applications. He has published more than 80 refereed papers, received multiple best paper and research awards, and serves as an associate editor for multiple ACM/CCF journals.</p>
           </article>
 
           <article class="organizer">
             <div class="organizer-meta">
               <strong>Chen Yang</strong>
-              <p>Kuaishou Technology<br><a href="mailto:yangchen28@kuaishou.com">yangchen28@kuaishou.com</a></p>
+              <p class="organizer-affil">Kuaishou Technology</p>
+              <a class="organizer-email" href="mailto:yangchen28@kuaishou.com">yangchen28@kuaishou.com</a>
             </div>
-            <p class="organizer-bio">Chen Yang, the Vice President of Technology at Kuaishou, leads the Algorithm Engine Department. He is responsible for end-to-end engineering systems for recommendation, advertising, and search. With over a decade of experience in large-scale recommendation systems, AI Infrastructure, and cloud-native scheduling, he has spearheaded multiple open-source initiatives and research publications in AI engineering technologies.</p>
           </article>
         </div>
       </div>
@@ -705,7 +706,7 @@
 
     <!-- Call for Papers -->
     <section class="prose" id="cfp">
-      <h2 class="section-heading"><span class="section-kicker">Call for Papers</span>Submit Your Work</h2>
+      <h2 class="section-heading">Call For Paper</h2>
 
       <div class="split">
         <div class="split-main">
@@ -717,7 +718,7 @@
 
           <p>A further goal of the workshop is to encourage the development of shared artifacts for rigorous and reproducible research. Today, many important systems questions in recommender systems are difficult to study because public benchmarks, traces, and evaluation methodologies often fail to capture the scale, heterogeneity, dynamism, and operational constraints of production environments. FRecSys therefore particularly encourages submissions that expose realistic production constraints, characterize workloads that are difficult to capture in existing public benchmarks, formalize open systems problems for emerging recommendation platforms, or propose community resources such as representative traces, workload specifications, benchmark suites, and evaluation guidelines.</p>
 
-          <h3 class="subhead"><span class="section-kicker">Topics</span>Main Topics</h3>
+          <h3 class="subhead">Main Topics</h3>
           <p style="margin-bottom:0.5rem">Topics of interest include, but are not limited to:</p>
 
           <ul class="topics">
