@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontier Recommender Systems (FRecSys)</title>
+  <title>FRecSys 2026 · Frontier Recommender Systems Workshop @ ACM SIGOPS ATC 2026</title>
+  <meta name="description" content="The 1st Frontier Recommender Systems (FRecSys) Workshop, co-located with ACM SIGOPS ATC 2026, November 15, 2026, Hyatt Hotel, Shatin, Hong Kong.">
   <style>
     :root {
       --navy-950: #081421;
@@ -15,32 +16,25 @@
       --red-600: #b43a3f;
       --red-100: #f9e9e9;
       --ink-900: #16212c;
-      --ink-700: #40505f;
+      --ink-700: #405060;
       --ink-500: #667585;
       --paper: #ffffff;
-      --canvas: #f3f6f8;
-      --line: #dce4e9;
-      --shadow: 0 22px 60px rgba(8, 20, 33, 0.10);
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --content: 1120px;
+      --canvas: #fbfcfd;
+      --line: #e4eaef;
+      --line-strong: #cdd6dd;
+      --content: 1240px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       color: var(--ink-900);
-      background:
-        linear-gradient(180deg, #eef4f7 0, #f7f9fa 30rem, var(--canvas) 100%);
+      background: var(--canvas);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.72;
+      line-height: 1.62;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
     }
@@ -50,117 +44,250 @@
       text-decoration-thickness: 1px;
       text-underline-offset: 0.18em;
     }
+    a:hover { color: var(--red-600); }
 
-    a:hover {
-      color: var(--red-600);
+    /* ---------- Top Navigation ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 252, 253, 0.86);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      width: min(calc(100% - 2rem), var(--content));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem 0;
+    }
+    .nav-brand {
+      color: var(--navy-900);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-brand span { color: var(--red-600); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .nav-links a {
+      color: var(--ink-700);
+      padding: 0.5rem 0.85rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--navy-900); background: rgba(13,32,51,0.05); }
+    .nav-links a.active { color: var(--red-600); }
+    .nav-cta {
+      color: #ffffff !important;
+      background: var(--navy-900);
+      border: 1px solid var(--navy-900);
+    }
+    .nav-cta:hover { background: var(--navy-800); color: #ffffff !important; }
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-toggle svg { width: 20px; height: 20px; }
+
+    @media (max-width: 760px) {
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+        padding: 0.75rem 1rem 1rem;
+        background: rgba(255,255,255,0.98);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 6px 24px rgba(8,20,33,0.06);
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 0.65rem 0.75rem; }
+      .nav-cta { margin-top: 0.35rem; text-align: center; }
     }
 
+    /* ---------- Hero ---------- */
     .hero {
       position: relative;
       overflow: hidden;
-      min-height: 34rem;
+      min-height: 32rem;
       display: grid;
       place-items: center;
-      padding: 5rem 1.5rem 7rem;
+      padding: 4.5rem 1.5rem 6rem;
       color: #ffffff;
       background:
-        radial-gradient(circle at 82% 18%, rgba(90, 172, 216, 0.28), transparent 22rem),
-        radial-gradient(circle at 12% 92%, rgba(180, 58, 63, 0.23), transparent 24rem),
+        radial-gradient(circle at 82% 18%, rgba(90,172,216,0.28), transparent 22rem),
+        radial-gradient(circle at 12% 92%, rgba(180,58,63,0.23), transparent 24rem),
         linear-gradient(135deg, var(--navy-950), var(--navy-800));
     }
-
-    .hero::before,
-    .hero::after {
+    .hero::before, .hero::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 50%;
     }
-
-    .hero::before {
-      width: 28rem;
-      height: 28rem;
-      right: -9rem;
-      top: -12rem;
-    }
-
-    .hero::after {
-      width: 18rem;
-      height: 18rem;
-      left: -6rem;
-      bottom: -9rem;
-    }
+    .hero::before { width: 28rem; height: 28rem; right: -9rem; top: -12rem; }
+    .hero::after { width: 18rem; height: 18rem; left: -6rem; bottom: -9rem; }
 
     .hero-inner {
       position: relative;
       z-index: 1;
       width: min(100%, var(--content));
+      text-align: left;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: end;
+      grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 0.82fr);
       gap: 3rem;
+      align-items: center;
     }
-
+    .hero-main { min-width: 0; }
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 1.25rem;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.06);
+    }
     .hero h1 {
-      max-width: 850px;
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-size: clamp(2.6rem, 6vw, 5.1rem);
       font-weight: 700;
       letter-spacing: -0.055em;
-      line-height: 0.96;
+      line-height: 0.98;
     }
-
     .hero .subtitle {
-      margin: 1.65rem 0 0;
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-      color: rgba(255, 255, 255, 0.76);
-      letter-spacing: 0.02em;
+      max-width: 640px;
+      margin: 1.4rem 0 0;
+      font-size: clamp(1.02rem, 1.8vw, 1.22rem);
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.01em;
     }
 
-    .duration {
-      min-width: 10.5rem;
-      padding: 1.25rem 1.4rem;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.72rem 1.4rem;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s;
+    }
+    .btn-primary {
+      background: var(--red-600);
+      color: #ffffff;
+      box-shadow: 0 10px 26px rgba(180,58,63,0.32);
+    }
+    .btn-primary:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(180,58,63,0.4); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.32);
+      color: #ffffff;
+    }
+    .btn-ghost:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* At a glance (hero) — light glass card */
+    .at-glance {
+      align-self: center;
+      padding: 1.85rem 1.9rem;
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-
-    .duration h2 {
-      margin: 0 0 0.25rem;
-      color: rgba(255, 255, 255, 0.62);
+    .at-glance h3 {
+      margin: 0 0 1.3rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.82rem;
+    }
+    .at-glance dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem 1.25rem;
+    }
+    .at-glance dt {
+      color: rgba(255,255,255,0.48);
       font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      align-self: center;
     }
-
-    .duration p {
+    .at-glance dd {
       margin: 0;
-      color: #ffffff;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.55rem;
+      color: #fff;
+      font-size: 1.12rem;
+      font-weight: 500;
+      line-height: 1.35;
     }
+    .at-glance dd small { display: block; color: rgba(255,255,255,0.6); font-weight: 400; font-size: 0.92rem; margin-top: 0.1rem; }
+    .at-glance .status {
+      margin-top: 1.4rem;
+      padding-top: 1.3rem;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .at-glance .status b { color: #ffd9a8; }
 
+    /* ---------- Main (frameless) ---------- */
     main {
       position: relative;
       z-index: 2;
       width: min(calc(100% - 2rem), var(--content));
-      margin: -3.5rem auto 5rem;
+      margin: 0 auto;
+      padding: 4rem 0 5rem;
     }
-
     section {
-      scroll-margin-top: 1.5rem;
+      scroll-margin-top: 5rem;
+      padding: 0;
     }
-
-    .panel {
-      margin-bottom: 1.5rem;
-      padding: clamp(1.6rem, 4vw, 3.5rem);
-      border: 1px solid rgba(220, 228, 233, 0.95);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: var(--shadow);
+    section + section {
+      margin-top: 3.5rem;
+      padding-top: 3.5rem;
+      border-top: 1px solid var(--line);
     }
 
     .section-heading {
@@ -171,10 +298,9 @@
       margin: 0 0 2rem;
       color: var(--navy-900);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.8rem, 4vw, 2.65rem);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
       line-height: 1.12;
     }
-
     .section-heading::before {
       content: "";
       width: 0.35rem;
@@ -182,329 +308,362 @@
       border-radius: 999px;
       background: var(--red-600);
     }
-
-    .prose p {
-      margin: 0 0 1.15rem;
-      color: var(--ink-700);
-      font-size: 1.02rem;
-    }
-
-    .prose p:last-child {
-      margin-bottom: 0;
-    }
-
-    .submission-note {
-      margin: 2rem 0;
-      padding: 1.5rem 1.6rem;
-      border-left: 4px solid var(--red-600);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      background: linear-gradient(90deg, var(--red-100), #fff 88%);
-    }
-
-    .submission-note p {
-      color: var(--ink-900);
-    }
-
-    .topics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-      margin: 1.5rem 0 0;
-      padding: 0;
-      list-style: none;
-      counter-reset: topics;
-    }
-
-    .topics li {
-      position: relative;
-      min-height: 100%;
-      padding: 1.15rem 1.15rem 1.15rem 3.15rem;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: linear-gradient(145deg, #ffffff, #f7fafb);
-      color: var(--ink-700);
-    }
-
-    .topics li::before {
-      content: "";
-      position: absolute;
-      top: 1.48rem;
-      left: 1.35rem;
-      width: 0.7rem;
-      height: 0.7rem;
-      border-radius: 50%;
-      background: var(--blue-600);
-      box-shadow: 0 0 0 0.35rem var(--blue-100);
-    }
-
-    .people-list {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin: 1.5rem 0 2rem;
-      padding: 0;
-      list-style: none;
-    }
-
-    .people-list li {
-      padding: 1.15rem;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fbfcfd;
-      color: var(--ink-700);
-    }
-
-    .people-list strong {
+    .section-kicker {
       display: block;
-      color: var(--navy-900);
-      font-size: 1.02rem;
+      margin-bottom: 0.35rem;
+      color: var(--red-600);
+      font-family: Inter, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
 
-    .committee-block + .committee-block {
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--line);
-    }
+    .prose p { margin: 0 0 1.1rem; color: var(--ink-700); font-size: 1.02rem; }
+    .prose p:last-child { margin-bottom: 0; }
 
-    .committee-block h3 {
+    /* Two-column body text (Overview) */
+    .prose-cols {
+      column-count: 2;
+      column-gap: 2.75rem;
+    }
+    .prose-cols p { break-inside: avoid-column; }
+
+    /* Split layout (CFP) */
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(15rem, 0.85fr);
+      gap: 3rem;
+      align-items: start;
+    }
+    .split-main { min-width: 0; }
+    .sidebar {
+      position: sticky;
+      top: 5.5rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+    .side-block h4 {
       margin: 0 0 1rem;
       color: var(--navy-900);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.35rem;
-      line-height: 1.3;
+      font-size: 1.05rem;
+      font-weight: 700;
     }
 
-    .committee-members {
-      margin-bottom: 0;
-    }
-
-    .committee-members.single-member {
-      grid-template-columns: minmax(0, 1fr);
-      max-width: 24rem;
-    }
-
-    .organizers {
+    .subhead {
       display: grid;
-      gap: 1rem;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--navy-900);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+    .subhead::before {
+      content: "";
+      width: 0.28rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      background: var(--blue-600);
+    }
+    .subhead .section-kicker { margin-bottom: 0; }
+
+    /* Topics — plain bullet list */
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.45rem 1.5rem;
+      margin: 1.25rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .topics li {
+      position: relative;
+      padding: 0.45rem 0 0.45rem 1rem;
+      color: var(--ink-700);
+      font-size: 0.98rem;
+    }
+    .topics li::before {
+      content: "";
+      position: absolute;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      left: 0;
+      width: 2px;
+      border-radius: 1px;
+      background: var(--blue-600);
     }
 
-    .organizer {
+    /* Important dates — tinted box, red accent */
+    .dates {
+      margin-top: 0;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--red-600);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background: var(--red-100);
+    }
+    .dates-row {
       display: grid;
-      grid-template-columns: minmax(13rem, 0.36fr) minmax(0, 1fr);
-      gap: 2rem;
-      padding: 1.5rem;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.75rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(180,58,63,0.18);
+      align-items: baseline;
+    }
+    .dates-row:last-child { border-bottom: none; }
+    .dates-row .what { color: var(--ink-900); font-weight: 600; font-size: 0.92rem; }
+    .dates-row .when { color: var(--navy-800); font-weight: 600; white-space: nowrap; font-size: 0.9rem; }
+    .dates-row .when.tba { color: var(--ink-500); font-weight: 500; }
+    .dates-foot {
+      margin: 0.7rem 0 0;
+      font-size: 0.78rem;
+      color: var(--ink-500);
+    }
+    .sidebar .dates-row { grid-template-columns: 1fr; gap: 0.1rem; }
+    .sidebar .dates-row .when { white-space: normal; }
+
+    /* Submission rules — plain bordered box */
+    .submission-rules {
+      margin: 0;
+      padding: 1.2rem 1.3rem;
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
-      background: linear-gradient(145deg, #ffffff, #f7fafb);
+      background: #fbfcfd;
+    }
+    .submission-rules p {
+      color: var(--ink-700);
+      font-size: 0.92rem;
+      margin: 0 0 0.6rem;
+    }
+    .submission-rules p:last-child { margin-bottom: 0; }
+
+    /* People — small rounded cards */
+    .people-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin: 1.25rem 0 1.75rem;
+      padding: 0;
+      list-style: none;
+    }
+    .people-list li {
+      padding: 1rem 1.1rem;
+      color: var(--ink-700);
+      font-size: 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfcfd;
+    }
+    .people-list strong { display: block; color: var(--navy-900); font-size: 1rem; margin-bottom: 0.15rem; }
+
+    .committee-block + .committee-block {
+      margin-top: 2.25rem;
+      padding-top: 2.25rem;
+      border-top: 1px solid var(--line);
+    }
+    .committee-block h3 {
+      margin: 0 0 0.9rem;
+      color: var(--navy-900);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      line-height: 1.3;
+    }
+    .committee-members { margin-bottom: 0; }
+    .committee-members.single-member { grid-template-columns: minmax(0, 1fr); max-width: 24rem; }
+    .pc-placeholder {
+      padding: 1rem 1.2rem;
+      color: var(--ink-500);
+      font-size: 0.93rem;
+      border: 1px dashed var(--line-strong);
+      border-radius: 12px;
+      background: #fbfcfd;
     }
 
+    /* Organizers — header card + bio, separated by dividers */
+    .organizers { display: grid; gap: 0; }
+    .organizer {
+      display: grid;
+      grid-template-columns: minmax(13rem, 0.34fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .organizer:first-child { border-top: none; padding-top: 0; }
     .organizer-meta {
       align-self: start;
-      padding: 1.15rem;
-      border-radius: 12px;
-      background: var(--navy-900);
-      color: #ffffff;
-    }
-
-    .organizer-meta p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .organizer-meta strong {
-      display: block;
-      margin-bottom: 0.35rem;
-      color: #ffffff;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.35rem;
-    }
-
-    .organizer-meta a {
-      color: #c8e8fa;
-      overflow-wrap: anywhere;
-    }
-
-    .organizer-bio {
-      margin: 0;
-      align-self: center;
-      color: var(--ink-700);
-    }
-
-    .prior-history {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .prior-history .section-heading {
-      margin-bottom: 0;
-    }
-
-    .prior-history p {
-      margin: 0;
-      padding: 1rem 1.2rem;
+      padding: 1.15rem 1.2rem;
+      border: 1px solid var(--line);
       border-radius: 12px;
       background: var(--blue-100);
-      color: var(--navy-800);
-      font-weight: 600;
+    }
+    .organizer-meta strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--navy-900);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.2rem;
+    }
+    .organizer-meta p {
+      margin: 0;
+      color: var(--ink-700);
+      font-size: 0.9rem;
+    }
+    .organizer-meta a { color: var(--blue-600); overflow-wrap: anywhere; }
+    .organizer-bio { margin: 0; align-self: center; color: var(--ink-700); font-size: 0.98rem; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--line);
+      background: var(--navy-950);
+      color: rgba(255,255,255,0.7);
+      padding: 2.75rem 1.5rem 2.25rem;
+    }
+    .footer-inner {
+      width: min(calc(100% - 2rem), var(--content));
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .footer h4 {
+      margin: 0 0 0.75rem;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+    }
+    .footer p { margin: 0.3rem 0; font-size: 0.92rem; }
+    .footer a { color: #c8e8fa; }
+    .footer .copyright {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.5);
     }
 
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-inner { grid-template-columns: 1fr; align-items: start; gap: 2rem; }
+      .prose-cols { column-count: 1; }
+      .split { grid-template-columns: 1fr; }
+      .sidebar { position: static; top: auto; }
+    }
     @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
-
-      .duration {
-        min-width: 0;
-        width: max-content;
-      }
-
-      .people-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .organizer {
-        grid-template-columns: 1fr;
-      }
+      .people-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .organizer { grid-template-columns: 1fr; gap: 0.75rem; }
     }
-
     @media (max-width: 640px) {
-      .hero {
-        min-height: 29rem;
-        padding-top: 4rem;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.75rem, 17vw, 4.4rem);
-      }
-
-      .panel {
-        padding: 1.35rem;
-        border-radius: 18px;
-      }
-
-      .topics,
-      .people-list {
-        grid-template-columns: 1fr;
-      }
-
-      .prior-history {
-        display: block;
-      }
-
-      .prior-history .section-heading {
-        margin-bottom: 1.5rem;
-      }
+      .hero { min-height: 28rem; padding-top: 4rem; }
+      .topics { grid-template-columns: 1fr; }
+      .people-list { grid-template-columns: 1fr; }
+      .dates-row { grid-template-columns: 1fr; }
+      .dates-row .when { white-space: normal; }
     }
 
     @media print {
-      body {
-        background: #ffffff;
-      }
-
+      body { background: #ffffff; }
+      .nav, .hero-actions { display: none; }
       .hero {
         min-height: auto;
         padding: 2rem;
-        color: #000000;
-        background: #ffffff;
+        color: #000;
+        background: #fff;
       }
-
-      .hero .subtitle,
-      .duration h2,
-      .duration p {
-        color: #000000;
-      }
-
-      .duration,
-      .panel {
-        box-shadow: none;
-        border: 1px solid #cccccc;
-        background: #ffffff;
-      }
-
-      main {
-        margin-top: 1rem;
-      }
+      .hero .eyebrow, .hero .subtitle, .hero .badge, .hero .badge span,
+      .at-glance, .at-glance h3, .at-glance dt, .at-glance dd, .at-glance .status { color: #000; border-color: #ccc; }
+      section + section { border-top: 1px solid #ccc; }
+      .footer { background: #fff; color: #000; }
+      .footer a { color: #000; }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <div>
-        <h1>Frontier Recommender Systems (FRecSys)</h1>
-        <p class="subtitle">ATC 2026 Workshop Proposal</p>
-      </div>
-      <section class="duration">
-        <h2>Duration</h2>
-        <p>Half Day.</p>
-      </section>
+  <!-- ===== Navigation ===== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">FRecSys <span>&#39;26</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="7" x2="21" y2="7"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="17" x2="21" y2="17"/>
+        </svg>
+      </button>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#people">People</a>
+        <a href="#cfp">Call for Papers</a>
+        <a class="nav-cta" href="https://sigops.org/s/conferences/atc/2026/index.html" target="_blank" rel="noopener">ATC 2026 &#8599;</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <section class="panel prose" id="call-for-papers">
-      <h2 class="section-heading">Sample Call for Papers</h2>
+  <!-- ===== Hero ===== -->
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <span class="eyebrow">ACM SIGOPS ATC 2026 Workshop</span>
+        <h1>Frontier Recommender Systems</h1>
+        <p class="subtitle">FRecSys 2026 &mdash; The 1st Workshop on the Infrastructure Foundations of Modern Recommender Systems.</p>
 
-      <p>The 1st Frontier Recommender Systems (FRecSys) workshop aims to provide a forum for the systems and recommendation communities to rethink the infrastructure foundations of modern recommender systems. Recommender systems are now core production infrastructure for online services, shaping user experience, content distribution, advertising, and e-commerce at global scale. They operate under strict latency, cost, reliability, and freshness constraints, while continuously adapting to changing users, content, models, policies, and business requirements.</p>
-
-      <p>For many years, recommender-system infrastructure has been shaped by retrieval-and-ranking pipelines, large embedding tables, feature stores, and DLRM-style serving architectures. These systems remain essential and continue to raise important systems challenges. At the same time, rapid advances in AI are creating new recommendation paradigms, including generative recommendation, foundation-model-based recommendation, multimodal recommendation, agentic recommendation, chain-of-thought recommendation, and interactive user modeling. These emerging workloads change both what recommender systems compute and how they must be served. They introduce new requirements for model execution, user-context management, online adaptation, system observability, resource scheduling, evaluation, and deployment at scale.</p>
-
-      <p>FRecSys seeks papers that examine how recommendation infrastructure should evolve for these frontier workloads. We welcome early ideas, position papers, preliminary research results, industry experience reports, benchmark proposals, and lessons from production deployments. The workshop aims to bring together researchers and practitioners from systems, machine learning, recommendation, databases, networking, hardware, and cloud infrastructure to identify open problems and community resources for the next generation of recommendation systems.</p>
-
-      <p>A further goal of the workshop is to encourage the development of shared artifacts for rigorous and reproducible research. Today, many important systems questions in recommender systems are difficult to study because public benchmarks, traces, and evaluation methodologies often fail to capture the scale, heterogeneity, dynamism, and operational constraints of production environments. FRecSys therefore particularly encourages submissions that expose realistic production constraints, characterize workloads that are difficult to capture in existing public benchmarks, formalize open systems problems for emerging recommendation platforms, or propose community resources such as representative traces, workload specifications, benchmark suites, and evaluation guidelines.</p>
-
-      <div class="submission-note">
-        <p>Submissions must present original work that has not been previously published in peer-reviewed venues.</p>
-        <p>Prior or simultaneous dissemination in non-peer-reviewed outlets—such as arXiv.org, institutional or technical reports, conference or seminar presentations, and social media communications—is explicitly allowed.</p>
-        <p>Research papers may not exceed 6 pages of main content; additional pages devoted exclusively to references are permitted without restriction.</p>
-        <p>All submissions must adhere to the <a href="https://sigops.org/s/conferences/atc/2026/cfp.html">ATC 2026 formatting rules</a>.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cfp">View Call for Papers</a>
+          <a class="btn btn-ghost" href="https://sigops.org/s/conferences/atc/2026/index.html" target="_blank" rel="noopener">ATC 2026 Main Conference &#8599;</a>
+        </div>
       </div>
 
-      <p>The half-day workshop will include research presentations, practitioner-facing panels, and a closing discussion on open systems problems and possible community artifacts.</p>
+      <aside class="at-glance">
+        <h3>At a Glance</h3>
+        <dl>
+          <dt>Date</dt><dd>November 15, 2026</dd>
+          <dt>Venue</dt><dd>Hyatt Regency<small>Shatin, Hong Kong</small></dd>
+          <dt>Format</dt><dd>Half-day workshop</dd>
+        </dl>
+        <div class="status"><b>Submissions opening soon.</b> Key dates to be announced.</div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main>
+    <!-- Overview -->
+    <section class="prose" id="overview">
+      <h2 class="section-heading"><span class="section-kicker">Overview</span>About the Workshop</h2>
+
+      <div class="prose-cols">
+        <p>The 1st Frontier Recommender Systems (<strong>FRecSys</strong>) workshop, co-located with <a href="https://sigops.org/s/conferences/atc/2026/index.html" target="_blank" rel="noopener">ACM SIGOPS ATC 2026</a>, provides a forum for the systems and recommendation communities to rethink the infrastructure foundations of modern recommender systems. Recommender systems are now core production infrastructure for online services&mdash;shaping user experience, content distribution, advertising, and e-commerce at global scale&mdash;operating under strict latency, cost, reliability, and freshness constraints while continuously adapting to changing users, content, models, and business requirements.</p>
+
+        <p>For many years, recommender-system infrastructure has been shaped by retrieval-and-ranking pipelines, large embedding tables, feature stores, and DLRM-style serving architectures. At the same time, rapid advances in AI are creating new paradigms&mdash;generative, foundation-model-based, multimodal, agentic, chain-of-thought, and interactive recommendation&mdash;that change both <em>what</em> these systems compute and <em>how</em> they must be served, introducing new requirements for model execution, user-context management, online adaptation, observability, scheduling, evaluation, and deployment at scale.</p>
+
+        <p>FRecSys seeks papers that examine how recommendation infrastructure should evolve for these frontier workloads, and encourages the development of shared artifacts&mdash;traces, benchmarks, and evaluation methodologies&mdash;for rigorous, reproducible research. We welcome early ideas, position papers, preliminary results, industry experience reports, benchmark proposals, and lessons from production deployments.</p>
+      </div>
     </section>
 
-    <section class="panel prose" id="main-topics">
-      <h2 class="section-heading">Main Topics</h2>
-      <p>Topics of interest include, but are not limited to:</p>
-
-      <ul class="topics">
-        <li>Agentic, interactive, and reasoning-enhanced recommendation systems.</li>
-        <li>Infrastructures for generative and agentic recommendation.</li>
-        <li>Retrieval, ranking, and generative recommendation systems.</li>
-        <li>Multimodal, graph-based, sequence-based, and foundation-model-based recommenders.</li>
-        <li>Serving systems for large-scale recommenders.</li>
-        <li>Batching, scheduling, GPU acceleration, and tail-latency control.</li>
-        <li>Embedding systems, feature stores, user-context management, and caching.</li>
-        <li>Online learning, continual training, model refresh, and feature freshness.</li>
-        <li>Safe model deployment, rollout, rollback, and production experimentation.</li>
-        <li>Streaming logs, feedback loops, user simulation, and benchmark construction.</li>
-        <li>Reliability, observability, debugging, and incident response for recommendation services.</li>
-        <li>Privacy, security, fairness, safety, and governance.</li>
-        <li>Co-design across algorithms, accelerators, and serving platforms.</li>
-        <li>Workload characterization, production traces, evaluation methodology, and reproducibility.</li>
-      </ul>
-    </section>
-
-    <section class="panel" id="committees">
-      <h2 class="section-heading">Committees</h2>
+    <!-- People -->
+    <section id="people">
+      <h2 class="section-heading"><span class="section-kicker">People</span>Committees &amp; Organizers</h2>
 
       <div class="committee-block">
         <h3>General &amp; Steering Committee Co-Chairs</h3>
         <ul class="people-list committee-members">
-          <li><strong>Yiming Qiu</strong>, The University of Hong Kong</li>
-          <li><strong>Renyu Yang</strong>, Beihang University</li>
-          <li><strong>Chen Yang</strong>, Kuaishou Technology</li>
-          <li><strong>Yuan Xie</strong>, Hong Kong University of Science and Technology</li>
-          <li><strong>Ceyu Xu</strong>, Hong Kong University of Science and Technology</li>
+          <li><strong>Yiming Qiu</strong>The University of Hong Kong</li>
+          <li><strong>Renyu Yang</strong>Beihang University</li>
+          <li><strong>Chen Yang</strong>Kuaishou Technology</li>
+          <li><strong>Yuan Xie</strong>Hong Kong University of Science and Technology</li>
+          <li><strong>Ceyu Xu</strong>Hong Kong University of Science and Technology</li>
         </ul>
       </div>
 
       <div class="committee-block">
         <h3>Program Committee</h3>
-        <!-- Program Committee members will be added later. -->
+        <p class="pc-placeholder">Program Committee members will be announced soon.</p>
       </div>
 
       <div class="committee-block">
@@ -513,39 +672,165 @@
           <li><strong>Xiangrui Yang</strong></li>
         </ul>
       </div>
-    </section>
 
-    <section class="panel" id="organizers">
-      <h2 class="section-heading">Organizer Information</h2>
+      <div class="committee-block">
+        <h3>Organizer Information</h3>
+        <div class="organizers">
+          <article class="organizer">
+            <div class="organizer-meta">
+              <strong>Yiming Qiu</strong>
+              <p>The University of Hong Kong<br><a href="mailto:yimingq@hku.hk">yimingq@hku.hk</a></p>
+            </div>
+            <p class="organizer-bio">Yiming Qiu is an Assistant Professor at the Department of Computer Science, the University of Hong Kong. He has served as a TPC member and reviewer for conferences and journals such as SIGCOMM, ASPLOS, and ToN, among others, and he is the Web Chair for ATC 2026. His research spans systems and networking, with a focus on using performance analysis, low-level optimizations, automated reasoning, and machine learning techniques to improve cloud automation, infrastructure reliability, and system performance. His research interest focuses on the deployment of frontier recommendation systems, where large-scale retrieval, ranking, embedding, and serving pipelines depend on reliable cloud infrastructure, efficient datacenter communication, and secure operations.</p>
+          </article>
 
-      <div class="organizers">
-        <article class="organizer">
-          <div class="organizer-meta">
-            <p><strong>Yiming Qiu</strong>. The University of Hong Kong. <a href="mailto:yimingq@hku.hk">yimingq@hku.hk</a>.</p>
-          </div>
-          <p class="organizer-bio">Yiming Qiu is an Assistant Professor at the Department of Computer Science, the University of Hong Kong. He has served as a TPC member and reviewer for conferences and journals such as SIGCOMM, ASPLOS, and ToN, among others, and he is the Web Chair for ATC 2026. His research spans systems and networking, with a focus on using performance analysis, low-level optimizations, automated reasoning, and machine learning techniques to improve cloud automation, infrastructure reliability, and system performance. His research interest focuses on the deployment of frontier recommendation systems, where large-scale retrieval, ranking, embedding, and serving pipelines depend on reliable cloud infrastructure, efficient datacenter communication, and secure operations.</p>
-        </article>
+          <article class="organizer">
+            <div class="organizer-meta">
+              <strong>Renyu Yang</strong>
+              <p>Beihang University<br><a href="mailto:renyuyang@buaa.edu.cn">renyuyang@buaa.edu.cn</a></p>
+            </div>
+            <p class="organizer-bio">Renyu Yang is an Associate Professor with the School of Software at Beihang University. He has served as TPC members/chairs across ICDCS, WWW, KDD, AAAI, etc. His research focuses on large-scale dependable distributed systems, AI infrastructure, AIOps, particularly for recommendation and AI applications. He has published more than 80 refereed papers, received multiple best paper and research awards, and serves as an associate editor for multiple ACM/CCF journals.</p>
+          </article>
 
-        <article class="organizer">
-          <div class="organizer-meta">
-            <p><strong>Renyu Yang</strong>. Beihang University. <a href="mailto:renyuyang@buaa.edu.cn">renyuyang@buaa.edu.cn</a>.</p>
-          </div>
-          <p class="organizer-bio">Renyu Yang is an Associate Professor with the School of Software at Beihang University. He has served as TPC members/chairs across ICDCS, WWW, KDD, AAAI, etc. His research focuses on large-scale dependable distributed systems, AI infrastructure, AIOps, particularly for recommendation and AI applications. He has published more than 80 refereed papers, received multiple best paper and research awards, and serves as an associate editor for multiple ACM/CCF journals.</p>
-        </article>
-
-        <article class="organizer">
-          <div class="organizer-meta">
-            <p><strong>Chen Yang</strong>. Kuaishou Technology. <a href="mailto:yangchen28@kuaishou.com">yangchen28@kuaishou.com</a>.</p>
-          </div>
-          <p class="organizer-bio">Chen Yang, the Vice President of Technology at Kuaishou, leads the Algorithm Engine Department. He is responsible for end-to-end engineering systems for recommendation, advertising, and search. With over a decade of experience in large-scale recommendation systems, AI Infrastructure, and cloud-native scheduling, he has spearheaded multiple open-source initiatives and research publications in AI engineering technologies.</p>
-        </article>
+          <article class="organizer">
+            <div class="organizer-meta">
+              <strong>Chen Yang</strong>
+              <p>Kuaishou Technology<br><a href="mailto:yangchen28@kuaishou.com">yangchen28@kuaishou.com</a></p>
+            </div>
+            <p class="organizer-bio">Chen Yang, the Vice President of Technology at Kuaishou, leads the Algorithm Engine Department. He is responsible for end-to-end engineering systems for recommendation, advertising, and search. With over a decade of experience in large-scale recommendation systems, AI Infrastructure, and cloud-native scheduling, he has spearheaded multiple open-source initiatives and research publications in AI engineering technologies.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="panel prior-history" id="prior-history">
-      <h2 class="section-heading">Prior History</h2>
-      <p>This workshop has not been previously held.</p>
+    <!-- Call for Papers -->
+    <section class="prose" id="cfp">
+      <h2 class="section-heading"><span class="section-kicker">Call for Papers</span>Submit Your Work</h2>
+
+      <div class="split">
+        <div class="split-main">
+          <p>The 1st Frontier Recommender Systems (FRecSys) workshop aims to provide a forum for the systems and recommendation communities to rethink the infrastructure foundations of modern recommender systems. Recommender systems are now core production infrastructure for online services, shaping user experience, content distribution, advertising, and e-commerce at global scale. They operate under strict latency, cost, reliability, and freshness constraints, while continuously adapting to changing users, content, models, policies, and business requirements.</p>
+
+          <p>For many years, recommender-system infrastructure has been shaped by retrieval-and-ranking pipelines, large embedding tables, feature stores, and DLRM-style serving architectures. These systems remain essential and continue to raise important systems challenges. At the same time, rapid advances in AI are creating new recommendation paradigms, including generative recommendation, foundation-model-based recommendation, multimodal recommendation, agentic recommendation, chain-of-thought recommendation, and interactive user modeling. These emerging workloads change both what recommender systems compute and how they must be served. They introduce new requirements for model execution, user-context management, online adaptation, system observability, resource scheduling, evaluation, and deployment at scale.</p>
+
+          <p>FRecSys seeks papers that examine how recommendation infrastructure should evolve for these frontier workloads. We welcome early ideas, position papers, preliminary research results, industry experience reports, benchmark proposals, and lessons from production deployments. The workshop aims to bring together researchers and practitioners from systems, machine learning, recommendation, databases, networking, hardware, and cloud infrastructure to identify open problems and community resources for the next generation of recommendation systems.</p>
+
+          <p>A further goal of the workshop is to encourage the development of shared artifacts for rigorous and reproducible research. Today, many important systems questions in recommender systems are difficult to study because public benchmarks, traces, and evaluation methodologies often fail to capture the scale, heterogeneity, dynamism, and operational constraints of production environments. FRecSys therefore particularly encourages submissions that expose realistic production constraints, characterize workloads that are difficult to capture in existing public benchmarks, formalize open systems problems for emerging recommendation platforms, or propose community resources such as representative traces, workload specifications, benchmark suites, and evaluation guidelines.</p>
+
+          <h3 class="subhead"><span class="section-kicker">Topics</span>Main Topics</h3>
+          <p style="margin-bottom:0.5rem">Topics of interest include, but are not limited to:</p>
+
+          <ul class="topics">
+            <li>Agentic, interactive, and reasoning-enhanced recommendation systems.</li>
+            <li>Infrastructures for generative and agentic recommendation.</li>
+            <li>Retrieval, ranking, and generative recommendation systems.</li>
+            <li>Multimodal, graph-based, sequence-based, and foundation-model-based recommenders.</li>
+            <li>Serving systems for large-scale recommenders.</li>
+            <li>Batching, scheduling, GPU acceleration, and tail-latency control.</li>
+            <li>Embedding systems, feature stores, user-context management, and caching.</li>
+            <li>Online learning, continual training, model refresh, and feature freshness.</li>
+            <li>Safe model deployment, rollout, rollback, and production experimentation.</li>
+            <li>Streaming logs, feedback loops, user simulation, and benchmark construction.</li>
+            <li>Reliability, observability, debugging, and incident response for recommendation services.</li>
+            <li>Privacy, security, fairness, safety, and governance.</li>
+            <li>Co-design across algorithms, accelerators, and serving platforms.</li>
+            <li>Workload characterization, production traces, evaluation methodology, and reproducibility.</li>
+          </ul>
+        </div>
+
+        <aside class="sidebar">
+          <div class="side-block">
+            <h4>Important Dates</h4>
+            <div class="dates">
+              <div class="dates-row">
+                <span class="what">Workshop Day</span>
+                <span class="when">November 15, 2026 &middot; Hong Kong</span>
+              </div>
+              <div class="dates-row">
+                <span class="what">Paper Submission Deadline</span>
+                <span class="when tba">To Be Announced</span>
+              </div>
+              <div class="dates-row">
+                <span class="what">Author Notification</span>
+                <span class="when tba">To Be Announced</span>
+              </div>
+              <div class="dates-row">
+                <span class="what">Camera-Ready Deadline</span>
+                <span class="when tba">To Be Announced</span>
+              </div>
+            </div>
+            <p class="dates-foot">All deadlines 23:59 AoE (Anywhere on Earth), unless otherwise stated.</p>
+          </div>
+
+          <div class="side-block">
+            <h4>Submission Rules</h4>
+            <div class="submission-rules">
+              <p>Submissions must present original work not previously published in peer-reviewed venues.</p>
+              <p>Prior dissemination via non-peer-reviewed outlets (arXiv, technical reports, talks, social media) is explicitly allowed.</p>
+              <p>Research papers: up to <strong>6 pages</strong> of main content; references unrestricted.</p>
+              <p>Adhere to the <a href="https://sigops.org/s/conferences/atc/2026/cfp.html">ATC 2026 formatting rules</a>.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <p style="margin-top:2rem">The half-day workshop will include research presentations, practitioner-facing panels, and a closing discussion on open systems problems and possible community artifacts. This is the first edition of the workshop.</p>
     </section>
   </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <h4>FRecSys 2026</h4>
+        <p>Frontier Recommender Systems Workshop</p>
+        <p>Co-located with ACM SIGOPS ATC 2026</p>
+      </div>
+      <div>
+        <h4>Venue</h4>
+        <p><a href="https://www.hyatt.com/hyatt-regency/en/US/shahr-hyatt-regency-hong-kong-sha-tin" target="_blank" rel="noopener">Hyatt Regency Hong Kong, Shatin</a></p>
+        <p>November 15, 2026</p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <p><a href="https://sigops.org/s/conferences/atc/2026/index.html" target="_blank" rel="noopener">ATC 2026 Home</a></p>
+        <p><a href="https://sigops.org/s/conferences/atc/2026/cfp.html" target="_blank" rel="noopener">ATC 2026 Call for Papers</a></p>
+        <p><a href="https://sigops.org/s/conferences/atc/2026/cfw.html" target="_blank" rel="noopener">ATC 2026 Call for Workshops</a></p>
+      </div>
+      <div class="copyright">
+        &copy; 2026 FRecSys Workshop Committee. First edition. &middot; Site maintained by the Web Chair.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Scroll-spy: highlight current section in nav
+    const sections = document.querySelectorAll('main section[id]');
+    const anchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    if ('IntersectionObserver' in window) {
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            anchors.forEach(a => {
+              a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(s => spy.observe(s));
+    }
+  </script>
 </body>
 </html>
