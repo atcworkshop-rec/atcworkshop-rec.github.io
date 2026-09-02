@@ -120,7 +120,7 @@
     }
     .nav-toggle svg { width: 20px; height: 20px; }
 
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       .nav-toggle { display: inline-flex; }
       .nav-links {
         position: absolute;
@@ -453,6 +453,15 @@
     }
     .sidebar .dates-row { grid-template-columns: 1fr; gap: 0.1rem; }
     .sidebar .dates-row .when { white-space: normal; }
+    .dates-row .when del {
+      color: var(--ink-500);
+      font-weight: 500;
+    }
+    .dates-row .when ins {
+      display: block;
+      color: var(--navy-800);
+      text-decoration: none;
+    }
 
     /* Submission rules — plain bordered box */
     .submission-rules {
@@ -683,6 +692,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="#overview">Overview</a>
         <a href="#cfp">Call for Papers</a>
+        <a href="#review">Review Process</a>
         <a href="#people">People</a>
         <a href="https://sigops.org/s/conferences/atc/2026/index.html" target="_blank" rel="noopener">ATC 2026 &#8599;</a>
         <a class="nav-cta" href="https://frecsys26.hotcrp.com/" target="_blank" rel="noopener">Submit Paper &#8599;</a>
@@ -813,7 +823,7 @@
               </div>
               <div class="dates-row">
                 <span class="what">Author Notification</span>
-                <span class="when">September 30, 2026</span>
+                <span class="when"><del datetime="2026-09-30">September 30, 2026</del><ins datetime="2026-10-01">October 1, 2026</ins></span>
               </div>
               <div class="dates-row">
                 <span class="what">Camera-Ready Deadline</span>
@@ -829,7 +839,7 @@
               <p><strong><a href="https://frecsys26.hotcrp.com/" target="_blank" rel="noopener">Submit your paper via HotCRP &#8599;</a></strong></p>
               <p>Submissions must present original work not previously published in peer-reviewed venues.</p>
               <p>Prior dissemination via non-peer-reviewed outlets (arXiv, technical reports, talks, social media) is explicitly allowed.</p>
-              <p>Submissions will be reviewed under a <strong>double-blind</strong> process and must be properly anonymized.</p>
+              <p>Submissions will be reviewed under a <strong>double-anonymous</strong> process and must be properly anonymized.</p>
               <p>Submissions may contain up to <strong>6 pages</strong> of main content; references are unrestricted.</p>
               <p>No extended abstract is required. All other submission and formatting requirements follow the <a href="https://sigops.org/s/conferences/atc/2026/cfp.html">ATC 2026 rules</a>.</p>
             </div>
@@ -838,6 +848,25 @@
       </div>
 
       <p style="margin-top:2rem">The half-day workshop will include research presentations, practitioner-facing panels, and a closing discussion on open systems problems and possible community artifacts. This is the first edition of the workshop.</p>
+    </section>
+
+    <!-- Review Process -->
+    <section class="prose" id="review">
+      <h2 class="section-heading">Review Process</h2>
+
+      <div class="review-process">
+        <h3 class="subhead">Double-Anonymous Review</h3>
+        <p>FRecSys uses a <strong>double-anonymous</strong> review process: authors&rsquo; identities are hidden from reviewers, and reviewers&rsquo; identities are hidden from authors. Submissions must not reveal author names, affiliations, or other identifying information.</p>
+
+        <h3 class="subhead">Three Reviews per Paper</h3>
+        <p>Each submission is expected to receive <strong>three independent reviews</strong>. Reviewers are drawn from the <a href="#people">Program Committee listed below</a>, where their names and affiliations are provided.</p>
+
+        <h3 class="subhead">One-Month Review Period</h3>
+        <p>Reviewers will have approximately <strong>one month</strong> to evaluate submissions. The author-notification date has been updated to October 1, 2026.</p>
+
+        <h3 class="subhead">Final Decisions</h3>
+        <p>Submissions will receive an accept or reject decision directly; the workshop will not issue minor- or major-revision decisions. Authors of accepted papers may address reviewer feedback when preparing the camera-ready version.</p>
+      </div>
     </section>
 
     <!-- People -->
@@ -849,7 +878,7 @@
         <div class="organizers">
           <article class="organizer">
             <div class="organizer-meta">
-              <strong><a href="https://yimingqiu.me/" target="_blank" rel="noopener">Yiming Qiu</a></strong>
+              <strong><a href="https://www.cs.hku.hk/people/academic-staff/yimingq" target="_blank" rel="noopener">Yiming Qiu</a></strong>
               <p class="organizer-affil">The University of Hong Kong</p>
               <a class="organizer-email" href="mailto:yimingq@hku.hk">yimingq@hku.hk</a>
             </div>
@@ -857,7 +886,7 @@
 
           <article class="organizer">
             <div class="organizer-meta">
-              <strong><a href="https://yangrenyu.github.io/" target="_blank" rel="noopener">Renyu Yang</a></strong>
+              <strong><a href="https://shi.buaa.edu.cn/yangrenyu/en/index.htm" target="_blank" rel="noopener">Renyu Yang</a></strong>
               <p class="organizer-affil">Beihang University</p>
               <a class="organizer-email" href="mailto:renyuyang@buaa.edu.cn">renyuyang@buaa.edu.cn</a>
             </div>
