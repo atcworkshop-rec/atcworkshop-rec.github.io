@@ -358,6 +358,33 @@
     }
     .prose-cols p { break-inside: avoid-column; }
 
+    /* Publication information — plain text at the end of the CFP */
+    .publication-notice {
+      margin-top: 2.5rem;
+      scroll-margin-top: 6rem;
+      overflow-wrap: anywhere;
+    }
+    .publication-notice h3 {
+      margin: 0 0 0.75rem;
+      color: var(--navy-900);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+    .publication-notice h4 {
+      margin: 1.25rem 0 0.75rem;
+      color: var(--ink-700);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .publication-resources {
+      margin: -0.35rem 0 1.1rem;
+      padding-left: 1.25rem;
+      color: var(--ink-700);
+    }
+    .publication-resources li + li { margin-top: 0.35rem; }
+
     /* Split layout (CFP) */
     .split {
       display: grid;
@@ -569,6 +596,21 @@
     }
     .footer p { margin: 0.3rem 0; font-size: 0.92rem; }
     .footer a { color: #c8e8fa; }
+    .sigops-affiliation { margin-top: 0.75rem; }
+    .sigops-logo-link {
+      display: inline-block;
+      max-width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      background: #ffffff;
+      line-height: 0;
+    }
+    .sigops-logo {
+      display: block;
+      width: 140px;
+      max-width: 100%;
+      height: auto;
+    }
     .footer-meta {
       width: 100%;
       margin-top: 1.5rem;
@@ -817,12 +859,27 @@
               <p>Submissions will be reviewed under a <strong>double-anonymous</strong> process and must be properly anonymized.</p>
               <p>Submissions may contain up to <strong>6 pages</strong> of main content; references are unrestricted.</p>
               <p>No extended abstract is required. All other submission and formatting requirements follow the <a href="https://sigops.org/s/conferences/atc/2026/cfp.html">ATC 2026 rules</a>.</p>
+              <p>Publication may be subject to an article processing charge (APC). Please see the <a href="#publication">Publication &amp; Open Access information</a>.</p>
             </div>
           </div>
         </aside>
       </div>
 
       <p style="margin-top:2rem">The half-day workshop will include research presentations, practitioner-facing panels, and a closing discussion on open systems problems and possible community artifacts. This is the first edition of the workshop.</p>
+
+      <div class="publication-notice" id="publication" role="region" aria-labelledby="publication-title">
+        <h3 id="publication-title">Publication &amp; Open Access</h3>
+        <p>The proceedings of FRecSys &rsquo;26 will be published in the ACM Digital Library as part of the International Conference Proceedings Series (ICPS).</p>
+
+        <h4>Important note to authors about ACM's new open access publishing model</h4>
+        <p>ACM has introduced a new open access publishing model for the International Conference Proceedings Series (ICPS). Authors based at institutions that are not yet part of the ACM Open program and do not qualify for a full geographic waiver will be required to pay an article processing charge (APC) to publish their ICPS article in the ACM Digital Library. To determine whether or not an APC will be applicable to your article, please follow the <a href="https://www.acm.org/publications/icps/author-guidance" target="_blank" rel="noopener">detailed guidance here</a>.</p>
+        <p>Further information may be found on the ACM website, as follows:</p>
+        <ul class="publication-resources">
+          <li><a href="https://www.acm.org/publications/icps/faq" target="_blank" rel="noopener">Full details of the new ICPS publishing model</a></li>
+          <li><a href="https://www.acm.org/publications/openaccess" target="_blank" rel="noopener">Full details of the ACM Open program</a></li>
+        </ul>
+        <p>Please direct all questions about the new model to <a href="mailto:icps-info@acm.org">icps-info@acm.org</a>.</p>
+      </div>
     </section>
 
     <!-- Review Process -->
@@ -924,6 +981,11 @@
         <h4>FRecSys 2026</h4>
         <p>Workshop on Frontier Recommender Systems</p>
         <p>Co-located with ACM SIGOPS ATC 2026</p>
+        <div class="sigops-affiliation">
+          <a class="sigops-logo-link" href="https://www.sigops.org/" target="_blank" rel="noopener">
+            <img class="sigops-logo" src="assets/images/sigopslogo.png" alt="ACM SIGOPS" width="233" height="80" loading="lazy">
+          </a>
+        </div>
       </div>
       <div>
         <h4>Venue</h4>
