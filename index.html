@@ -495,6 +495,95 @@
     }
     .submission-rules p:last-child { margin-bottom: 0; }
 
+    /* Program — day schedule */
+    .program-meta {
+      margin: -0.75rem 0 1.75rem;
+      color: var(--ink-500);
+      font-size: 0.95rem;
+    }
+    .schedule {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+    .slot {
+      display: grid;
+      grid-template-columns: 8.5rem minmax(0, 1fr);
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .slot-time {
+      color: var(--navy-800);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .slot h3 {
+      margin: 0;
+      color: var(--navy-900);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .slot-note {
+      margin: 0.2rem 0 0;
+      color: var(--ink-500);
+      font-size: 0.92rem;
+    }
+    .slot-break .slot-time,
+    .slot-break h3 { color: var(--ink-500); font-weight: 500; }
+    .slot-session { padding: 1.4rem 0 0.6rem; }
+    .session-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--red-600);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .slot-session h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .session-papers {
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .session-papers li {
+      display: grid;
+      grid-template-columns: 3.25rem minmax(0, 1fr);
+      gap: 0.75rem;
+      padding: 0.8rem 0;
+      border-top: 1px dashed var(--line-strong);
+    }
+    .paper-time {
+      padding-top: 0.05rem;
+      color: var(--ink-500);
+      font-size: 0.88rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .paper-title {
+      display: block;
+      color: var(--ink-900);
+      font-size: 0.98rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .paper-authors {
+      display: block;
+      margin-top: 0.2rem;
+      color: var(--ink-700);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
     /* People — small rounded cards */
     .people-list {
       display: grid;
@@ -673,6 +762,8 @@
       .organizers { grid-template-columns: 1fr; }
       .dates-row { grid-template-columns: 1fr; }
       .dates-row .when { white-space: normal; }
+      .slot { grid-template-columns: 1fr; gap: 0.3rem; }
+      .session-papers li { grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0.5rem; }
       .footer-meta { align-items: flex-start; flex-direction: column; gap: 1rem; }
       .footer .copyright { text-align: left; }
     }
@@ -712,7 +803,7 @@
         <a href="#review">Review Process</a>
         <a href="#people">People</a>
         <a href="https://sigops.org/s/conferences/atc/2026/index.html" target="_blank" rel="noopener">ATC 2026 &#8599;</a>
-        <a class="nav-cta" href="https://frecsys26.hotcrp.com/" target="_blank" rel="noopener">Submit Paper &#8599;</a>
+        <a class="nav-cta" href="#program">Program</a>
       </nav>
     </div>
   </header>
@@ -761,7 +852,7 @@
         <p class="subtitle">The 1st Workshop on Frontier Recommender Systems</p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://frecsys26.hotcrp.com/" target="_blank" rel="noopener">Submit Paper &#8599;</a>
+          <a class="btn btn-primary" href="#program">View Program</a>
           <a class="btn btn-ghost" href="#cfp">View Call for Papers</a>
         </div>
       </div>
@@ -773,7 +864,7 @@
           <dt>Venue</dt><dd>Hyatt Regency<small>Regency Ballroom I &middot; Shatin, Hong Kong</small></dd>
           <dt>Format</dt><dd>Half-day workshop</dd>
         </dl>
-        <div class="status"><b>Submissions are open.</b> Submit by <s>September 1, 2026</s><br><b>September 8, 2026</b> (AoE).</div>
+        <div class="status"><b>Program announced.</b> 13 accepted papers across two paper sessions.</div>
       </aside>
     </div>
   </header>
@@ -789,6 +880,154 @@
 
         <p>Emerging paradigms&mdash;including generative, foundation-model-based, multimodal, agentic, and interactive recommendation&mdash;are reshaping what recommender systems compute and how they are built and served. FRecSys offers a forum to explore the infrastructure needed for these frontier workloads and to advance rigorous, reproducible research through shared insights, benchmarks, and evaluation methods.</p>
       </div>
+    </section>
+
+    <!-- Program -->
+    <section id="program">
+      <h2 class="section-heading">Program</h2>
+      <p class="program-meta">Sunday, November 15, 2026 &middot; Regency Ballroom I, Hyatt Regency Hong Kong, Shatin &middot; All times are Hong Kong Time (UTC+8)</p>
+
+      <ol class="schedule">
+        <li class="slot slot-break">
+          <span class="slot-time">08:00&ndash;08:30</span>
+          <div><h3>Registration &amp; Badge Pickup</h3></div>
+        </li>
+        <li class="slot">
+          <span class="slot-time">08:30&ndash;08:40</span>
+          <div><h3>Opening Remarks</h3><p class="slot-note">General Co-Chairs</p></div>
+        </li>
+        <li class="slot">
+          <span class="slot-time">08:40&ndash;09:05</span>
+          <div><h3>Invited Talk</h3><p class="slot-note"><a href="https://minhui-xie.github.io/" target="_blank" rel="noopener">Minhui Xie</a> (Nanjing University)</p></div>
+        </li>
+        <li class="slot">
+          <span class="slot-time">09:05&ndash;09:10</span>
+          <div><h3>Best Paper Award</h3><p class="slot-note">Announcement and award presentation</p></div>
+        </li>
+        <li class="slot slot-session">
+          <span class="slot-time">09:10&ndash;10:30</span>
+          <div>
+            <span class="session-label">Paper Session 1</span>
+            <h3>Generative Recommendation Inference &amp; Serving</h3>
+            <p class="slot-note">Each paper: 8-minute talk + 2-minute Q&amp;A</p>
+            <ol class="session-papers">
+              <li>
+                <span class="paper-time">09:10</span>
+                <div>
+                  <span class="paper-title">OneLA: Scaling Linear-Attention Decoding to Large Beams in Generative Recommendation</span>
+                  <span class="paper-authors">Xiangrui Yang (The University of Hong Kong); Cheng Peng, Yunfeng Zhao, Liang Zeng, Ao Hu (Kuaishou Technology); Jiawei Yang (Peking University); Shengzhe Wang, Jingshan Lv, Xiao Liang, Chen Yang, Jiaqiang Liu (Kuaishou Technology); Yiming Qiu (The University of Hong Kong)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">09:20</span>
+                <div>
+                  <span class="paper-title">Token-Native Serving Architecture for Generative Recommendation with Semantic IDs</span>
+                  <span class="paper-authors">Chuyu Qiu, Xuan Qi, Lujia Zhang, Chuanwei Yi, Faran Ahmad, Charlie Zhang, Hongbo Qin, Liangbei Xu, Jinho Hwang, Emma Lin, Yuxi Hu, Yongxiong Ren, Rui Jian, Jiyan Yang, Kai Ren (Meta)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">09:30</span>
+                <div>
+                  <span class="paper-title">RIG: GPU Inference Framework for Long-Context, Short-Decode, Large-Beam Generative Recommendation</span>
+                  <span class="paper-authors">Bin Chai, Jerry Chen (NVIDIA)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">09:40</span>
+                <div>
+                  <span class="paper-title">Taming Wide Beams: Request-Adaptive Inference for Generative Recommendation</span>
+                  <span class="paper-authors">Enrui Zhao (Renmin University of China); Minhui Xie (Nanjing University); Yunfeng Zhao (Kuaishou Technology); Puqing Wu, Yaxin Ma, Hongqi Shan (Renmin University of China); Yu Kong, Liang Zeng, Jiaqiang Liu, Xiao Liang (Kuaishou Technology); Yunpeng Chai (Renmin University of China)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">09:50</span>
+                <div>
+                  <span class="paper-title">FSBO: Fusing Vocabulary Projection and Beam Selection for Efficient Generative Recommendation</span>
+                  <span class="paper-authors">Chunfeng Du, Zeqing Wu, Wentao Li (Zhengzhou University); Yuan Liu (Dawning Information Industry Co., Ltd.); Zhihao Zhang (Tsinghua University)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">10:00</span>
+                <div>
+                  <span class="paper-title">FlagCD: Exact Request-Constrained Decoding over Billion-Scale Item Catalogs</span>
+                  <span class="paper-authors">Jiawei Yang (Peking University); Xiangrui Yang (The University of Hong Kong); Cheng Peng (Kuaishou Technology); Zihao Zheng (Peking University); Liang Zeng, Yunfeng Zhao, Lei Yan, Yuting Deng, Jiaqiang Liu, Xiao Liang (Kuaishou Technology)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">10:10</span>
+                <div>
+                  <span class="paper-title">ServerlessANN: Low-Latency Serverless Vector Search with CXL Memory Pools</span>
+                  <span class="paper-authors">Bing Tian, Yanlin Huang, Haikun Liu, Jianhao Mu, Zhuohui Duan (Huazhong University of Science and Technology); XiaoCheng Zhong, Yiping Sun, Xiao Chen (Xiaohongshu)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">10:20</span>
+                <div>
+                  <span class="paper-title">NaviPerf: Architecture-Aware Performance Prediction for LLM Serving on Ascend NPUs</span>
+                  <span class="paper-authors">Xiao Zhou, Jinghao Wang, Zeying Wang, Yifeng Zhang (Beihang University); Qicheng Liang (Xiaohongshu); Tianyu Wo, Chunming Hu, Renyu Yang (Beihang University)</span>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </li>
+        <li class="slot slot-break">
+          <span class="slot-time">10:30&ndash;11:00</span>
+          <div><h3>Coffee Break</h3></div>
+        </li>
+        <li class="slot slot-session">
+          <span class="slot-time">11:00&ndash;11:50</span>
+          <div>
+            <span class="session-label">Paper Session 2</span>
+            <h3>Training Systems &amp; Agentic Optimization</h3>
+            <p class="slot-note">Each paper: 8-minute talk + 2-minute Q&amp;A</p>
+            <ol class="session-papers">
+              <li>
+                <span class="paper-time">11:00</span>
+                <div>
+                  <span class="paper-title">RecIS: Unifying Sparse and Dense Computation for Efficient Recommendation Training</span>
+                  <span class="paper-authors">Hua Zong (Alibaba Group); Shuai Yang (University of Chinese Academy of Sciences); Zhengxiong Zhou, Qingtao Zeng, Jiawei Liu, Hao Wan, Hongbin Zhou, Jiahao Wang, Hao Zhang, Bencheng Yan, Yuheng Huang, Huimin Yi, Jiamang Wang, Han Zhu, Jian Xu, Bo Zheng, Lin Qu (Alibaba Group)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">11:10</span>
+                <div>
+                  <span class="paper-title">SparseRec: Predictive GPU Sharing and Data-Aware Scheduling for Recommendation Model Training</span>
+                  <span class="paper-authors">Jinghao Wang, Xinlei Zheng, Xiao Zhou, Yihui Zhang, Zeying Wang (Beihang University); Qicheng Liang (Xiaohongshu); Tianyu Wo, Chunming Hu (Beihang University); Xiaoyang Sun (University of Leeds)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">11:20</span>
+                <div>
+                  <span class="paper-title">KAISync: Characterizing and Optimizing Weight Synchronization in Co-Located RL Post-Training</span>
+                  <span class="paper-authors">Yuxi Luo (Beihang University); Xiaoyang Sun (Kuaishou Technology); Zeying Wang, Cangzhou Yuan (Beihang University); Hengrui Ju (Kuaishou Technology); Renyu Yang (Beihang University)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">11:30</span>
+                <div>
+                  <span class="paper-title">TALOS: Torch Acceleration through a Loop-Driven Optimization Skill for Recommendation Systems</span>
+                  <span class="paper-authors">Ruotong Wang, Weida Yang, Zihua Wu (NVIDIA)</span>
+                </div>
+              </li>
+              <li>
+                <span class="paper-time">11:40</span>
+                <div>
+                  <span class="paper-title">RobustSGPO: Search-Space Control for Agent Harness Evolution</span>
+                  <span class="paper-authors">Zibo Zhao, Jijun Shi, Mo Zhou, Zhongyuan Wang, Shifu Bie, Yunfei Zhang, Xuanting Zhou, Xiangyu Wu (Kuaishou Technology)</span>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </li>
+        <li class="slot">
+          <span class="slot-time">11:50&ndash;12:00</span>
+          <div><h3>Closing Remarks &amp; Open Discussion</h3></div>
+        </li>
+        <li class="slot slot-break">
+          <span class="slot-time">12:00&ndash;13:30</span>
+          <div><h3>Lunch &amp; Networking</h3></div>
+        </li>
+      </ol>
     </section>
 
     <!-- Call for Papers -->
@@ -865,7 +1104,7 @@
         </aside>
       </div>
 
-      <p style="margin-top:2rem">The half-day workshop will include research presentations, practitioner-facing panels, and a closing discussion on open systems problems and possible community artifacts. This is the first edition of the workshop.</p>
+      <p style="margin-top:2rem">The half-day workshop will include an invited talk, research paper presentations, and a closing discussion on open systems problems and possible community artifacts. See the <a href="#program">full program</a>. This is the first edition of the workshop.</p>
 
       <div class="publication-notice" id="publication" role="region" aria-labelledby="publication-title">
         <h3 id="publication-title">Publication &amp; Open Access</h3>
